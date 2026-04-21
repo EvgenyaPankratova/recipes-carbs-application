@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+/* Импорт стилей библиотек */
+
+/* Импорт стилей компонентов */
+
+@utility container {
+  @apply mx-auto px-5 max-w-full lg:px-18;
+}
+
+@utility flex-full {
+  @apply flex-[1_1_100%];
+}
+
+@theme static {
+  --font-magnola: "Magnola", sans-serif;
+  --font-imprima: "Imprima", sans-serif;
+  --font-gothic: "Gothic", sans-serif;
+
+  /* Обычные цвета. Пример использования:  lightBlue */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-lightBlue: #e9faff;
+  --color-orange: #ff7a00;
+  --color-lightPink: #ffe8ff;
+  --color-beige: #faebd7;
+}
+
+/* Общие стили проекта */
+main {
+  @apply text-black flex-full;
+}
+
+html {
+  @apply text-[0.8rem] leading-[1.2] tracking-[0.1rem] font-normal;
+  font-family: "Gothic", sans-serif;
+}
+
+.wrapper {
+  @apply bg-lightBlue w-full min-h-dvh flex flex-col relative;
+}
+
+.section-gutter {
+  @apply mt-[70px] lg:mt-42;
+}
+
+/*  !* Типография *!*/
+/*  .h1,*/
+/*  h1 {*/
+/*    font-size: 8rem; !* 128px *!*/
+/*  }*/
+
+/*  .h2,*/
+/*  h2 {*/
+/*    font-size: 4.375rem; !* 70px *!*/
+/*    font-weight: 500;*/
+
+/*    html[lang="hy"] & {*/
+/*      font-weight: 400;*/
+/*    }*/
+/*  }*/
+
+/*  .h3,*/
+/*  h3 {*/
+/*    @apply 2xl:text-[4rem] md:text-[2.5rem] sm:text-[2rem] text-[1.5rem];*/
+/*    !* 64px *!*/
+/*  }*/
+/*}*/
