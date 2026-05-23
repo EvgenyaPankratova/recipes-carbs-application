@@ -19,10 +19,10 @@ const Header = () => {
           <Link href="/about">
             <Logo className="w-8 h-10 " />
           </Link>
-          <Link href="/favorites">
+          <Link href="/account">
             <User className="w-8 h-8 " />
-            Избранное
           </Link>
+          <Link href="/favorites">Избранное</Link>
         </div>
       </nav>
     </header>

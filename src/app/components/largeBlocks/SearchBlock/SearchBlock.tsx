@@ -1,18 +1,20 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
+import FoundedRecipes from "@/app/components/smallBlocks/FoundedRecipes/FoundedRecipes";
+import type { ingredientItem } from "@/commonTypes/ingredients.types";
+import { ingredients } from "@/lib/ingredients";
 import User from "@/svg/user.svg";
 
 const SearchBlock = () => {
-  const [active, setActive] = useState([]);
-  const ingredients = [
-    { id: 1, item: "Томат" },
-    { id: 2, item: "Сливки" },
-    { id: 3, item: "Яйцо" },
-    { id: 4, item: "Спагетти" },
-    { id: 5, item: "Лук" },
-    { id: 6, item: "Курица" },
-  ];
+  const [active, setActive] = useState<ingredientItem[] | []>([]);
+  const [searchIngredient, setSearchIngredient] = useState<
+    [] | ingredientItem[]
+  >(active);
+
+  const uniqueIngredients = active.concat(searchIngredient);
+
+  console.log(uniqueIngredients, "uniqueIngredients ");
 
   return (
     <section className="flex flex-col justify-center items-center gap-10 my-36">
@@ -30,53 +32,72 @@ const SearchBlock = () => {
         </div>
       </div>
 
-      <div className="bg-white max-w-[60%] rounded-4xl w-full h-16 shadow-[0_4px_10px_rgba(0,0,0,0.25)]">
+      <form
+        // action={search}
+        className="bg-white max-w-[60%] rounded-4xl w-full h-16 shadow-[0_4px_10px_rgba(0,0,0,0.25)]"
+      >
         <input
+          onChange={(event) => setSearchIngredient(event.target.value)}
           className="w-full bg-transparent focus:outline-none p-6"
           type="search"
           placeholder={
             active.length > 0
               ? active.map((ingredient) => " " + ingredient.item)
-              : "Выберите ингредиенты или введите..."
+              : searchIngredient.length > 0
+                ? searchIngredient
+                : "Выберите ингредиенты или введите через пробел..."
           }
         />
-      </div>
+      </form>
 
-      <div>
-        <div>Ингредиенты</div>
+      <div className="flex gap-20 justify-center items-center">
+        <div>
+          <div className="mb-6 text-center">Какие ингредиенты у вас есть?</div>
 
-        <div
-          className={`
+          <div
+            className={`
           grid grid-cols-3 gap-x-8 gap-y-2 border-black text-black cursor-pointer`}
-        >
-          {ingredients.map(({ id, item }) => (
-            <button
-              type={"button"}
-              key={id}
-              className={`
+          >
+            {ingredients.map(({ id, item, img }) => (
+              <button
+                type={"button"}
+                key={id}
+                className={`
             ${active.find((elem) => elem.id === id) ? "bg-orange" : "bg-lightPink"}
-          flex gap-x-2 items-center rounded-4xl p-2 hover:bg-orange border-2 hover:border-transparent bg-lightPink border-black text-black cursor-pointer px-4`}
-              onClick={() => {
-                setActive((prev) =>
-                  prev.find((elem) => elem.id === id)
-                    ? prev.filter((item) => item.id !== id)
-                    : [...prev, { id, item }],
-                );
-              }}
-            >
-              <div className="relative w-9 h-8 lg:h-9 rounded-full overflow-hidden">
-                <Image
-                  src="/img/tomato.jpg"
-                  alt="promotion"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="">{item}</div>
-            </button>
-          ))}
+          flex gap-x-2 items-center rounded-4xl p-2 transition duration-300 hover:bg-orange border-2 hover:border-transparent bg-lightPink border-black text-black cursor-pointer px-4`}
+                onClick={() => {
+                  setActive((prev) =>
+                    prev.find((elem) => elem.id === id)
+                      ? prev.filter((item) => item.id !== id)
+                      : [...prev, { id, item }],
+                  );
+                }}
+              >
+                <div className="relative w-9 h-8 lg:h-9 rounded-full overflow-hidden">
+                  <Image
+                    src={img}
+                    alt="promotion"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="">{item}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative w-96 h-60 lg:h-[500px] overflow-hidden ">
+          <Image
+            src={"/img/refrigerator.png"}
+            alt="promotion"
+            fill
+            className="object-cover [filter:drop-shadow(4px_0_0_pink)_drop-shadow(-4px_0_0_pink)_drop-shadow(0_4px_0_pink)_drop-shadow(0_-4px_0_pink)]"
+          />
         </div>
       </div>
+
+      <FoundedRecipes selectedIngredients={active} />
     </section>
   );
 };

@@ -1,0 +1,15 @@
+export const ingredients = [
+    { id: 1, item: "Томат", img: '/img/tomato.jpg' },
+    { id: 2, item: "Сливки" , img: '/img/cream.jpg' },
+    { id: 3, item: "Яйцо" , img: '/img/egg.jpg' },
+    { id: 4, item: "Спагетти", img: '/img/spaghetti.jpg'  },
+    { id: 5, item: "Лук" , img: '/img/onion.png' },
+    { id: 6, item: "Курица", img: '/img/chicken.jpg'  },
+    { id: 7, item: "Сыр", img: '/img/swiss.jpg'  },
+    { id: 8, item: "Мука", img: '/img/muka.jpeg'  },
+    { id: 9, item: "Творог", img: '/img/tvorog.jpg'  },
+    { id: 10, item: "Соль", img: '/img/chicken.jpg'  },
+    { id: 11, item: "Говядина", img: '/img/beef.jpg'  },
+    { id: 12, item: "Салат романо", img: '/img/romano.jpg'  },
+    { id: 13, item: "Картофель", img: '/img/romano.jpg'  },
+];

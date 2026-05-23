@@ -1,0 +1,66 @@
+export const recipes = [
+  {
+    id: 11,
+    slug: "pasta-bolonese",
+    title: "Паста Болоньезе",
+    kcal: 550,
+    ingredients: [
+      { id: 1, item: "Томат" },
+      { id: 2, item: "Сливки" },
+      { id: 4, item: "Спагетти" },
+      { id: 5, item: "Лук" },
+      { id: 22, item: "Сыр" },
+    ],
+    img: "/img/bolonese.jpg",
+  },
+  {
+    id: 22,
+    slug: "salat-sezar",
+    title: "Салат Цезарь",
+    kcal: 400,
+    ingredients: [
+      { id: 1, item: "Томат" },
+      { id: 2, item: "Сыр" },
+      { id: 4, item: "Салат романо" },
+      { id: 5, item: "Курица" },
+    ],
+    img: "/img/salat-cezar.jpg",
+  },
+  {
+    id: 33,
+    slug: "pirog",
+    title: "Простой пирог с творогом",
+    kcal: 700,
+    ingredients: [
+      { id: 1, item: "Творог" },
+      { id: 2, item: "Сливки" },
+      { id: 4, item: "Мука" },
+      { id: 5, item: "Сахар" },
+    ],
+    img: "/img/pie.jpg",
+  },
+  {
+    id: 44,
+    slug: "burger",
+    title: "Бургер Техас",
+    kcal: 1100,
+    ingredients: [
+      { id: 1, item: "Томат" },
+      { id: 2, item: "Салат романо" },
+      { id: 4, item: "Говядина" },
+      { id: 5, item: "Лук" },
+    ],
+    img: "/img/texas.jpg",
+  },
+  {
+    id: 55,
+    slug: "yaichnitsa",
+    title: "Яичница",
+    kcal: 200,
+    ingredients: [
+      { id: 1, item: "Яйцо" },
+      { id: 5, item: "Соль" },
+    ],
+    img: "/img/eggs.jpg",
+  },
+];
