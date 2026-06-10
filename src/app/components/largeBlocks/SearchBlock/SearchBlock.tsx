@@ -1,20 +1,16 @@
 "use client";
 import Image from "next/image";
-import { SetStateAction, useState } from "react";
+import { type ChangeEvent, SetStateAction, useState } from "react";
 import FoundedRecipes from "@/app/components/smallBlocks/FoundedRecipes/FoundedRecipes";
+import Default from "@/app/components/ui/Button/Default/Default";
 import type { ingredientItem } from "@/commonTypes/ingredients.types";
 import { ingredients } from "@/lib/ingredients";
-import User from "@/svg/user.svg";
 
 const SearchBlock = () => {
-  const [active, setActive] = useState<ingredientItem[] | []>([]);
+  const [active, setActive] = useState<ingredientItem[]>([]);
   const [searchIngredient, setSearchIngredient] = useState<
-    [] | ingredientItem[]
-  >(active);
-
-  const uniqueIngredients = active.concat(searchIngredient);
-
-  console.log(uniqueIngredients, "uniqueIngredients ");
+    ingredientItem | undefined
+  >(active[0]);
 
   return (
     <section className="flex flex-col justify-center items-center gap-10 my-36">
@@ -34,20 +30,29 @@ const SearchBlock = () => {
 
       <form
         // action={search}
-        className="bg-white max-w-[60%] rounded-4xl w-full h-16 shadow-[0_4px_10px_rgba(0,0,0,0.25)]"
+        className="flex gap-4 w-full max-w-[60%]"
       >
         <input
-          onChange={(event) => setSearchIngredient(event.target.value)}
-          className="w-full bg-transparent focus:outline-none p-6"
-          type="search"
-          placeholder={
-            active.length > 0
-              ? active.map((ingredient) => " " + ingredient.item)
-              : searchIngredient.length > 0
-                ? searchIngredient
-                : "Выберите ингредиенты или введите через пробел..."
+          value={
+            searchIngredient
+              ? searchIngredient.item
+              : active
+                ? active.map((elem) => " " + elem.item)
+                : ""
           }
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            setSearchIngredient((prev) => ({
+              ...prev,
+              item: event.target.value,
+            }))
+          }
+          className="flex-1 bg-white rounded-4xl h-16 shadow-[0_4px_10px_rgba(0,0,0,0.25)] focus:outline-none p-6"
+          type="search"
+          placeholder="Выберите ингредиенты или введите через пробел..."
         />
+        <Default className="flex-shrink-0 self-center shadow-[0_4px_10px_rgba(0,0,0,0.25)] h-10">
+          Искать
+        </Default>
       </form>
 
       <div className="flex gap-20 justify-center items-center">
@@ -56,7 +61,7 @@ const SearchBlock = () => {
 
           <div
             className={`
-          grid grid-cols-3 gap-x-8 gap-y-2 border-black text-black cursor-pointer`}
+          grid grid-cols-3 gap-x-8 gap-y-2 text-black cursor-pointer`}
           >
             {ingredients.map(({ id, item, img }) => (
               <button
@@ -64,7 +69,7 @@ const SearchBlock = () => {
                 key={id}
                 className={`
             ${active.find((elem) => elem.id === id) ? "bg-orange" : "bg-lightPink"}
-          flex gap-x-2 items-center rounded-4xl p-2 transition duration-300 hover:bg-orange border-2 hover:border-transparent bg-lightPink border-black text-black cursor-pointer px-4`}
+          flex gap-x-2 items-center font-spectral lowercase text-[1.3rem] rounded-4xl p-2 transition duration-300 hover:bg-orange bg-lightPink  text-black cursor-pointer shadow-[0_4px_10px_rgba(0,0,0,0.25)]  px-4`}
                 onClick={() => {
                   setActive((prev) =>
                     prev.find((elem) => elem.id === id)

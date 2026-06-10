@@ -21,7 +21,31 @@
 @font-face {
   font-family: "Imprima";
   font-display: swap;
-  src: url("/fonts/imprima/Imprima-Regular.ttf") format("ttf");
+  src: url("/fonts/imprima/Imprima-Regular.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "Spectral";
+  font-display: swap;
+  src: url("/fonts/spectral/Spectral-Regular.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Spectral-italic";
+  font-display: swap;
+  src: url("/fonts/spectral/Spectral-Italic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Spectral-semibold";
+  font-display: swap;
+  src: url("/fonts/spectral/Spectral-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
 }

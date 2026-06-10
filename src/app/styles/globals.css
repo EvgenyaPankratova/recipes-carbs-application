@@ -13,10 +13,17 @@
   @apply flex-[1_1_100%];
 }
 
+@utility flex-r-center {
+  @apply flex justify-center items-center;
+}
+
 @theme static {
   --font-magnola: "Magnola", sans-serif;
   --font-imprima: "Imprima", sans-serif;
   --font-gothic: "Gothic", sans-serif;
+  --font-spectral: "Spectral", sans-serif;
+  --font-spectral-italic: "Spectral-italic", sans-serif;
+  --font-spectral-semibold: "Spectral-semibold", sans-serif;
 
   /* Обычные цвета. Пример использования:  lightBlue */
   --color-white: #ffffff;
@@ -44,26 +51,3 @@ html {
 .section-gutter {
   @apply mt-[70px] lg:mt-42;
 }
-
-/*  !* Типография *!*/
-/*  .h1,*/
-/*  h1 {*/
-/*    font-size: 8rem; !* 128px *!*/
-/*  }*/
-
-/*  .h2,*/
-/*  h2 {*/
-/*    font-size: 4.375rem; !* 70px *!*/
-/*    font-weight: 500;*/
-
-/*    html[lang="hy"] & {*/
-/*      font-weight: 400;*/
-/*    }*/
-/*  }*/
-
-/*  .h3,*/
-/*  h3 {*/
-/*    @apply 2xl:text-[4rem] md:text-[2.5rem] sm:text-[2rem] text-[1.5rem];*/
-/*    !* 64px *!*/
-/*  }*/
-/*}*/

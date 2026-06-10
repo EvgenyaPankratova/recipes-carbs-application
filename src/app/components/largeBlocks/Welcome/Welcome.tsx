@@ -7,7 +7,7 @@ const Welcome = () => {
       <div className="w-full lg:flex-1 relative">
         <div className="relative w-full h-[326px] sm:h-[526px] lg:h-[626px] xl:h-[726px] shadow-[0_4px_10px_rgba(0,0,0,0.25)] rounded-2xl lg:rounded-4xl overflow-hidden">
           <Image
-            src="/img/table.jpg"
+            src="/img/cook.png"
             alt="promotion"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -33,13 +33,22 @@ const Welcome = () => {
         </div>
       </div>
       <div className="lg:px-24 lg:max-w-[40%]">
-        <div className="flex flex-col gap-6">
-          <div className="text-4xl xl:text-7xl text-[clamp(2.25rem,4vw,4.5rem)]">
-            Добро пожаловать в сервис "Поиск рецептов"!
+        <div className="relative flex flex-col gap-6">
+          <div className="relative text-4xl xl:text-7xl text-[clamp(2.25rem,4vw,4.5rem)] z-[1]">
+            Добро пожаловать в сервис{" "}
+            <span className="text-orange">"Поиск рецептов"</span>!
           </div>
-          <div className="text-[clamp(1rem,3vw,1.4rem)]">
+          <div className="font-spectral text-[clamp(1.3rem,3.3vw,1.8rem)]">
             Здесь вы сможете найти рецепты по указанным ингредиентам совершенно
             бесплатно.
+          </div>
+          <div className="absolute -right-32 -top-40 h-[500px] w-[500px] z-[0] rounded-full overflow-hidden">
+            <Image
+              src="/img/ellipse.png"
+              alt="background"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
         <div className="mt-12">

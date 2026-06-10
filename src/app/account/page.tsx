@@ -4,10 +4,5 @@ import Personal from "@/app/components/largeBlocks/Personal/Personal";
 export default async function Account() {
   // Имитация задержки
   await new Promise((res) => setTimeout(res, 1000));
-  return (
-    <div className="container mt-44">
-      <BreadCrumbs />
-      <Personal />
-    </div>
-  );
+  return <Personal />;
 }

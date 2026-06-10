@@ -1,5 +1,5 @@
-import AboutBlock from "@/app/components/largeBlocks/AboutBlock/AboutBlock";
+import FavoritesBlock from "@/app/components/largeBlocks/FavoritesBlock/FavoritesBlock";
 
 export default function Favorites() {
-  return <div className="container pt-2">Favorites</div>;
+  return <FavoritesBlock />;
 }

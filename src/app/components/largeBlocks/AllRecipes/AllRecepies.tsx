@@ -2,44 +2,46 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import type {
+  compareKcalType,
+  sortKcalKey,
+} from "@/app/components/largeBlocks/AllRecipes/AllRecepies.types";
+import CommonBlock from "@/app/components/largeBlocks/CommonBlock/CommonBlock";
+import Default from "@/app/components/ui/Button/Default/Default";
 import type { recipeItem } from "@/commonTypes/recipes.types";
 import { recipes } from "@/lib/recipes";
 
 // import Heart from "@/svg/heart.svg";
 
 const AllRecepies = () => {
-  const [sortBy, setSortBy] = useState("ckalDesc");
+  const [sortBy, setSortBy] = useState<sortKcalKey>("kcalDesc");
 
-  const sortTypes = {
-    ckalDesc: () => recipes.sort((a, b) => a.kcal - b.kcal),
-    ckalUp: () => recipes.sort((a, b) => b.kcal - a.kcal),
+  const compareKcal: compareKcalType = {
+    kcalDesc: () => recipes.toSorted((a, b) => a.kcal - b.kcal),
+    kcalUp: () => recipes.toSorted((a, b) => b.kcal - a.kcal),
   };
 
-  const sorted = sortTypes[sortBy]();
+  const sorted: recipeItem[] = compareKcal[sortBy]();
+
+  const handleSort = () => {
+    setSortBy((prev) => (prev === "kcalDesc" ? "kcalUp" : "kcalDesc"));
+  };
 
   return (
-    <section className="mt-36">
-      <div className="flex justify-between items-center">
-        <div>Все рецепты</div>
-        <div
-          onClick={() =>
-            setSortBy((prev) => (prev === "ckalDesc" ? "ckalUp" : "ckalDesc"))
-          }
-          className="cursor-pointer"
-        >
-          Сортировка по {sortBy === "ckalDesc" ? "возрастанию" : "убыванию"}{" "}
-          калорий
-        </div>
-      </div>
-
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <CommonBlock
+      leftTitle={"Все рецептыleft"}
+      mainTitle={"Все рецепты"}
+      btnTitle={`Сортировка по ${sortBy === "kcalDesc" ? "возрастанию" : "убыванию"} калорий`}
+      btnFunc={handleSort}
+    >
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         {sorted.map((recipe: recipeItem) => (
           <Link
             href={`/recipes/${recipe.slug}`}
             key={recipe.id}
-            className="bg-beige rounded-4xl  shadow-[0_4px_10px_rgba(0,0,0,0.25)] overflow-hidden cursor-pointer hover:scale-105"
+            className="bg-beige rounded-4xl shadow-[0_4px_10px_rgba(0,0,0,0.25)] border-4 border-black overflow-hidden cursor-pointer hover:scale-105"
           >
-            <div className="relative   rounded-4xl  w-full h-[126px] lg:h-[276px]">
+            <div className="relative rounded-4xl  w-full h-[126px] lg:h-[276px]">
               <Image
                 src={recipe.img}
                 alt="promotion"
@@ -57,7 +59,11 @@ const AllRecepies = () => {
           </Link>
         ))}
       </div>
-    </section>
+
+      <div className="justify-self-center my-8">
+        <Default>Показать ещё 6 из 12</Default>
+      </div>
+    </CommonBlock>
   );
 };
 

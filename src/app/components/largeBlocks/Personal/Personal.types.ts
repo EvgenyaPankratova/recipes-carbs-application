@@ -4,4 +4,8 @@ type FormStateType = {
   message: string;
 };
 
-export type { FormStateType };
+type SubmitButtonProps = {
+  activeTabLabel: string;
+};
+
+export type { FormStateType, SubmitButtonProps };

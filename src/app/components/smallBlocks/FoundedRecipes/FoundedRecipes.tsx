@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import type { FoundedRecipesProps } from "@/app/components/smallBlocks/FoundedRecipes/FoundedRecipes.types";
-import type { ingredientItem } from "@/commonTypes/ingredients.types";
 import { recipes } from "@/lib/recipes";
 
 const FoundedRecipes = ({ selectedIngredients }: FoundedRecipesProps) => {
