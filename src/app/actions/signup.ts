@@ -1,6 +1,6 @@
 "use server";
-import type { FormStateType } from "@/app/components/largeBlocks/Personal/Personal.types";
 import type { currentUserType } from "@/commonTypes/users.types";
+import type { FormStateType } from "@/components/smallBlocks/PersonalForm/PersonalForm.types";
 import { users } from "@/lib/users";
 
 export async function signup(

@@ -1,5 +1,4 @@
-import AllRecepies from "@/app/components/largeBlocks/AllRecipes/AllRecepies";
-import CommonBlock from "@/app/components/largeBlocks/CommonBlock/CommonBlock";
+import AllRecepies from "@/components/largeBlocks/AllRecipes/AllRecepies";
 
 export default function Recipes() {
   return (

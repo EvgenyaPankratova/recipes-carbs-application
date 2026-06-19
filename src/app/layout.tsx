@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./styles/globals.css";
-import Header from "@/app/components/largeBlocks/Header/Header";
+import "@/styles/globals.css";
+import Header from "@/components/largeBlocks/Header/Header";
 
 export const metadata: Metadata = {
   title: "Recipes Next App",
@@ -15,9 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" className="h-full">
-      <body className="h-full">
-        <div className="wrapper">
-          <main className=" container">
+      <body className="h-full wrapper">
+        <div className="">
+          <main className="container">
             <Header />
             {children}
           </main>

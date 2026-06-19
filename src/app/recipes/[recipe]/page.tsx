@@ -1,4 +1,4 @@
-import RecipeBlock from "@/app/components/largeBlocks/RecipeBlock/RecipeBlock";
+import RecipeBlock from "@/components/largeBlocks/RecipeBlock/RecipeBlock";
 import { recipes } from "@/lib/recipes";
 
 export default async function Recipe({ params }) {

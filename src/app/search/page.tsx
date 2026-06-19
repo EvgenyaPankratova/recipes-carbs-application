@@ -1,5 +1,4 @@
-import SearchBlock from "@/app/components/largeBlocks/SearchBlock/SearchBlock";
-import FoundedRecipes from "@/app/components/smallBlocks/FoundedRecipes/FoundedRecipes.types";
+import SearchBlock from "@/components/largeBlocks/SearchBlock/SearchBlock";
 
 export default async function Page() {
   // Имитация задержки

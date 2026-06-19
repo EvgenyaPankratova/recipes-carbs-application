@@ -1,12 +1,12 @@
 import Link from "next/link";
-import Default from "@/app/components/ui/Button/Default/Default";
+import { CommonButton } from "@/components/ui/Button/CommonButton";
 
 export default function NotFound() {
   return (
     <div className="flex flex-col gap-y-8 justify-center items-center mt-44">
       <h2>Страница не найдена</h2>
       <Link href="/">
-        <Default>Вернуться на главную</Default>
+        <CommonButton>Вернуться на главную</CommonButton>
       </Link>
     </div>
   );
