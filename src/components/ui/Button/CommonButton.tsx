@@ -1,6 +1,7 @@
 const themes = {
   default: "bg-orange text-white hover:text-black",
   transparent: "bg-white opacity-90 text-black hover:text-orange",
+  pink: "bg-lightPink text-black hover:text-black/70",
 };
 
 export const CommonButton = ({

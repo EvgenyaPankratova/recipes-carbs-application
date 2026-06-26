@@ -1,4 +1,4 @@
-import { Nav } from "@/components/smallBlocks/Nav/Nav";
+import { Nav } from "@/components/layout/Nav/Nav";
 
 const Header = () => {
   return (

@@ -1,6 +1,6 @@
 import type { ingredientItem } from "@/commonTypes/ingredients.types";
 
-type recipeItem = {
+type recipeItemType = {
   id: number;
   slug: string;
   title: string;
@@ -9,4 +9,4 @@ type recipeItem = {
   img: string;
 };
 
-export type { recipeItem };
+export type { recipeItemType };

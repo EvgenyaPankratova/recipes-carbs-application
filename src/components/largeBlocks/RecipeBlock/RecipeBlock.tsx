@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { RecipeBlockProps } from "@/components/largeBlocks/RecipeBlock/RecipeBlock.types";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ingredients } from "@/lib/ingredients";
 import Heart from "@/svg/heart.svg";
 import RestangleStep from "@/svg/rectangleStep.svg";
@@ -10,6 +11,20 @@ import { CommonButton } from "../../ui/Button/CommonButton";
 
 const RecipeBlock = ({ recipe }: RecipeBlockProps) => {
   const router = useRouter();
+
+  const [savedRecipes, setSavedRecipes] = useLocalStorage("recipes", []);
+
+  const isRecipeInFavorites = savedRecipes.find(
+    (favRec) => favRec.id === recipe.id,
+  );
+
+  const handleToggleSaveRecipe = () => {
+    if (isRecipeInFavorites) {
+      setSavedRecipes(savedRecipes.filter((favRec) => favRec.id !== recipe.id));
+    } else {
+      setSavedRecipes([...savedRecipes, recipe]);
+    }
+  };
 
   const preparationMethod = [
     {
@@ -48,7 +63,10 @@ const RecipeBlock = ({ recipe }: RecipeBlockProps) => {
               fill
               className="object-cover"
             />
-            <div className="absolute right-8 top-8 text-lightPink hover:scale-125">
+            <div
+              onClick={handleToggleSaveRecipe}
+              className="absolute right-8 top-8 text-lightPink hover:scale-125"
+            >
               <Heart className="w-14 h-14" />
             </div>
           </div>

@@ -21,8 +21,10 @@ const CommonBlock = ({
 
         {(leftTitle || btn) && (
           <div className="flex items-center justify-between w-full mb-8">
-            {leftTitle && (
+            {leftTitle ? (
               <div className="text-[clamp(1.1rem,2vw,1.4rem)]">{leftTitle}</div>
+            ) : (
+              <div></div>
             )}
             {btn && (
               <CommonButton theme="default" onClick={btn.btnFunc}>

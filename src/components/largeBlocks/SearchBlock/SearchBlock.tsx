@@ -7,10 +7,20 @@ import { ingredients } from "@/lib/ingredients";
 import { CommonButton } from "../../ui/Button/CommonButton";
 
 const SearchBlock = () => {
-  const [active, setActive] = useState<ingredientItem[]>([]);
+  const [activeIngredients, setActiveIngredients] = useState<ingredientItem[]>(
+    [],
+  );
   const [searchIngredient, setSearchIngredient] = useState<
     ingredientItem | undefined
-  >(active[0]);
+  >(activeIngredients[0]);
+
+  const handleActiveIngredients = (id: number, item: string) => {
+    setActiveIngredients((prev) =>
+      prev.find((elem) => elem.id === id)
+        ? prev.filter((item) => item.id !== id)
+        : [...prev, { id, item }],
+    );
+  };
 
   return (
     <section className="flex flex-col justify-center items-center gap-10 my-36">
@@ -36,8 +46,8 @@ const SearchBlock = () => {
           value={
             searchIngredient
               ? searchIngredient.item
-              : active
-                ? active.map((elem) => " " + elem.item)
+              : activeIngredients
+                ? activeIngredients.map((elem) => " " + elem.item)
                 : ""
           }
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -68,15 +78,9 @@ const SearchBlock = () => {
                 type={"button"}
                 key={id}
                 className={`
-            ${active.find((elem) => elem.id === id) ? "bg-orange" : "bg-lightPink"}
+            ${activeIngredients.find((elem) => elem.id === id) ? "bg-orange" : "bg-lightPink"}
           flex gap-x-2 items-center font-spectral lowercase text-[1.3rem] rounded-4xl p-2 transition duration-300 hover:bg-orange bg-lightPink  text-black cursor-pointer shadow-[0_4px_10px_rgba(0,0,0,0.25)]  px-4`}
-                onClick={() => {
-                  setActive((prev) =>
-                    prev.find((elem) => elem.id === id)
-                      ? prev.filter((item) => item.id !== id)
-                      : [...prev, { id, item }],
-                  );
-                }}
+                onClick={() => handleActiveIngredients(id, item)}
               >
                 <div className="relative w-9 h-8 lg:h-9 rounded-full overflow-hidden">
                   <Image
@@ -102,7 +106,7 @@ const SearchBlock = () => {
         </div>
       </div>
 
-      <FoundedRecipes selectedIngredients={active} />
+      <FoundedRecipes selectedIngredients={activeIngredients} />
     </section>
   );
 };

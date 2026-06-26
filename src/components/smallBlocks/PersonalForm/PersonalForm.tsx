@@ -1,9 +1,10 @@
 "use client";
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { signup } from "@/app/actions/signup";
+import { signup } from "@/actions/signup";
 import CommonBlock from "@/components/largeBlocks/CommonBlock/CommonBlock";
 import type { SubmitButtonProps } from "@/components/smallBlocks/PersonalForm/PersonalForm.types";
+import { DoubleBorderContainer } from "@/components/ui/DoubleBorderContainer/DoubleBorderContainer";
 import Tabs from "@/components/ui/Tabs/Tabs";
 import { CommonButton } from "../../ui/Button/CommonButton";
 
@@ -35,10 +36,7 @@ const PersonalForm = () => {
 
   return (
     <CommonBlock mainTitle={"Личный кабинет"}>
-      <div
-        className="relative mx-auto z-[2] flex flex-col gap-y-6  w-full 2xl:w-[50%] justify-center items-center rounded-2xl lg:rounded-4xl bg-lightPink shadow-[0_4px_10px_rgba(0,0,0,0.25)] border-3 border-solid border-black p-4 lg:p-8  before:content-[''] before:absolute before:-inset-1 before:z-[-10] before:-translate-x-2 before:-translate-y-2
-  before:rounded-2xl lg:before:rounded-4xl before:bg-lightPink before:border-[3px] before:border-solid before:border-black"
-      >
+      <DoubleBorderContainer className="bg-lightPink before:bg-lightPink p-4 lg:p-8 mx-auto flex flex-col gap-y-6  w-full 2xl:w-[50%] justify-center items-center ">
         <div className="flex flex-col lg:flex-row gap-10 text-[clamp(1rem,4vw,1.6rem)] mb-2">
           <Tabs
             items={[
@@ -76,7 +74,7 @@ const PersonalForm = () => {
             <SubmitButton activeTabLabel={activeTabLabel} />
           </form>
         </div>
-      </div>
+      </DoubleBorderContainer>
 
       <div className="mt-15">
         {" "}

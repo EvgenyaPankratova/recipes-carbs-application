@@ -9,6 +9,7 @@ import type {
   sortKcalKey,
 } from "@/components/largeBlocks/AllRecipes/AllRecepies.types";
 import CommonBlock from "@/components/largeBlocks/CommonBlock/CommonBlock";
+import { RecipeItem } from "@/components/smallBlocks/RecipeItem/RecipeItem";
 import { recipes } from "@/lib/recipes";
 import { CommonButton } from "../../ui/Button/CommonButton";
 
@@ -39,27 +40,7 @@ const AllRecepies = () => {
     >
       <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         {sorted.map((recipe: recipeItem) => (
-          <Link
-            href={`/recipes/${recipe.slug}`}
-            key={recipe.id}
-            className="bg-beige rounded-4xl shadow-[0_4px_10px_rgba(0,0,0,0.25)] border-4 border-black overflow-hidden cursor-pointer hover:scale-105"
-          >
-            <div className="relative rounded-4xl  w-full h-[126px] lg:h-[276px]">
-              <Image
-                src={recipe.img}
-                alt="promotion"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute right-6 top-5 h-8 w-8 text-orange hover:scale-125">
-                {/*<Heart className="w-8 h-8"/>*/}
-              </div>
-            </div>
-            <div className="px-5 py-2">
-              <div>{recipe.title}</div>
-              <div>{recipe.kcal} kcal</div>
-            </div>
-          </Link>
+          <RecipeItem key={recipe.id} recipe={recipe} />
         ))}
       </div>
 
