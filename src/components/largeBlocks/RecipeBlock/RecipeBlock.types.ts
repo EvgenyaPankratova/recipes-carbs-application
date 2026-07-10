@@ -1,7 +1,13 @@
-import type { recipeItem } from "@/commonTypes/recipes.types";
+import type { recipeItemType } from "@/commonTypes/recipes.types";
 
 type RecipeBlockProps = {
-  recipe: recipeItem;
+  recipe: recipeItemType;
 };
 
-export type { RecipeBlockProps };
+type RecipePageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export type { RecipeBlockProps, RecipePageProps };

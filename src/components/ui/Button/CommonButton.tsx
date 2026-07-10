@@ -1,3 +1,5 @@
+import type { CommonButtonProps } from "@/components/ui/Button/CommonButton.types";
+
 const themes = {
   default: "bg-orange text-white hover:text-black",
   transparent: "bg-white opacity-90 text-black hover:text-orange",
@@ -9,7 +11,7 @@ export const CommonButton = ({
   className = "",
   children,
   ...props
-}) => {
+}: CommonButtonProps) => {
   const themeClasses = themes[theme] || themes.default;
 
   return (

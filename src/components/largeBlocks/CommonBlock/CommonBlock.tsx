@@ -10,7 +10,7 @@ const CommonBlock = ({
   children,
 }: CommonBlockProps) => {
   return (
-    <section className="overflow-hidden section-gutter">
+    <section className="section-gutter">
       <BreadCrumbs />
       <div className="">
         <div className="*:text-center text-[3rem] mb-16">

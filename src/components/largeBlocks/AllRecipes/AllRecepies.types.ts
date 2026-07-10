@@ -1,7 +1,7 @@
-import type { recipeItem } from "@/commonTypes/recipes.types";
+import type { recipeItemType } from "@/commonTypes/recipes.types";
 
-type sortKcalKey = "kcalDesc" | "kcalUp";
-type compareKcalFuncItem = () => recipeItem[];
+type sortKcalKey = "kcalDesc" | "kcalAsc";
+type compareKcalFuncItem = () => recipeItemType[];
 
 type compareKcalType = Record<sortKcalKey, compareKcalFuncItem>;
 

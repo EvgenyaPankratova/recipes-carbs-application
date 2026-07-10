@@ -133,7 +133,6 @@ const RecipeBlock = ({ recipe }: RecipeBlockProps) => {
                 <div className="relative flex-r-center w-20 h-20 shrink-0">
                   <RestangleStep className="absolute w-20 h-20"></RestangleStep>
 
-                  {/* Цифра поверх SVG */}
                   <span className="relative z-10 text-orange font-bold text-6xl">
                     {index + 1}
                   </span>

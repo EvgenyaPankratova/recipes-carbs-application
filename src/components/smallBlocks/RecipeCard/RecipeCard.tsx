@@ -21,7 +21,7 @@ const RecipeCard = ({ recipe }) => {
           className="w-full h-full object-cover"
         />
         <div className="absolute p-4 z-10">
-          <h3 className="font-semibold text-[2rem] line-clamp-2 mb-1">
+          <h3 className="font-semibold text-[2rem] line-clamp-3 mb-1">
             {recipe.title}
           </h3>
 

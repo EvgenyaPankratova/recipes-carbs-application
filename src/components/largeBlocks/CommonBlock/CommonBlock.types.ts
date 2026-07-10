@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 type CommonBlockBtnType = {
   btnTitle: string;
-  btnFunc?: string;
+  btnFunc?: () => void;
   btnLink?: string;
 };
 

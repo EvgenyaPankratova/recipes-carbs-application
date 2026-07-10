@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { recipeItemType } from "@/commonTypes/recipes.types";
 import type { FoundedRecipesProps } from "@/components/smallBlocks/FoundedRecipes/FoundedRecipes.types";
