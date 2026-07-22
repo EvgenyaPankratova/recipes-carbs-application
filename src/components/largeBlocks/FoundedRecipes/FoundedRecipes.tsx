@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import type { recipeItemType } from "@/commonTypes/recipes.types";
-import type { FoundedRecipesProps } from "@/components/smallBlocks/FoundedRecipes/FoundedRecipes.types";
+import CommonBlock from "@/components/largeBlocks/CommonBlock/CommonBlock";
+import type { FoundedRecipesProps } from "@/components/largeBlocks/FoundedRecipes/FoundedRecipes.types";
 import { RecipeItem } from "@/components/smallBlocks/RecipeItem/RecipeItem";
 import { recipes } from "@/lib/recipes";
 
 const FoundedRecipes = ({ selectedIngredients }: FoundedRecipesProps) => {
   const [foundedRecipes, setFoundedRecipes] = useState<recipeItemType[]>([]);
+  const [isRecipeModeStrong, setRecipeModeStrong] = useState(true);
 
   useEffect(() => {
     const matchRecipes = new Set<recipeItemType>();
@@ -25,20 +27,27 @@ const FoundedRecipes = ({ selectedIngredients }: FoundedRecipesProps) => {
     }
   }, [selectedIngredients]);
 
-  console.log(foundedRecipes, "foundedRecipes");
+  const handleRecipeMode = () => {
+    setRecipeModeStrong((prev) => !prev);
+  };
 
   return foundedRecipes.length > 0 ? (
-    <section className="flex flex-col justify-center items-center w-full">
-      <div className="text-4xl mb-10">Найденные рецепты</div>
-
+    <CommonBlock
+      mainTitle="Найденные рецепты"
+      btn={{
+        btnTitle: isRecipeModeStrong ? "Строгий режим" : "Нестрогий режим",
+        btnFunc: handleRecipeMode,
+      }}
+      hasBreadCrumbs={false}
+    >
       <div className="grid grid-cols-3 gap-8 w-full">
         {foundedRecipes.map((recipe) => (
           <RecipeItem key={recipe.id} recipe={recipe} />
         ))}
       </div>
-    </section>
+    </CommonBlock>
   ) : (
-    <section>Нет рецептов</section>
+    <section>Рецептов не найдено...</section>
   );
 };
 

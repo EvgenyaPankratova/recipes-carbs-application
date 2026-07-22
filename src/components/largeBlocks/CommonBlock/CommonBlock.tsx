@@ -6,12 +6,13 @@ const CommonBlock = ({
   mainTitle,
   mainTitleColor = "black",
   leftTitle,
+  hasBreadCrumbs = true,
   btn,
   children,
 }: CommonBlockProps) => {
   return (
-    <section className="section-gutter">
-      <BreadCrumbs />
+    <section className="section-gutter w-full">
+      {hasBreadCrumbs && <BreadCrumbs />}
       <div className="">
         <div className="*:text-center text-[3rem] mb-16">
           {mainTitle && (

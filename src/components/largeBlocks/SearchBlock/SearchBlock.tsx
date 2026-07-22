@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { type ChangeEvent, useState } from "react";
 import type { ingredientItem } from "@/commonTypes/ingredients.types";
-import FoundedRecipes from "@/components/smallBlocks/FoundedRecipes/FoundedRecipes";
+import FoundedRecipes from "@/components/largeBlocks/FoundedRecipes/FoundedRecipes";
 import { ingredients } from "@/lib/ingredients";
 import { CommonButton } from "../../ui/Button/CommonButton";
 

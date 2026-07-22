@@ -5,8 +5,12 @@ import { usePathname } from "next/navigation";
 import Heart from "@/svg/heart.svg";
 import Logo from "@/svg/logo.svg";
 import User from "@/svg/user.svg";
+import {useState} from "react";
+import {Tooltip} from "@/components/smallBlocks/Tooltip/Tooltip";
 
 export const Nav = () => {
+  const [isTooltipShown, setIsTooltipShown] = useState(false);
+
   const pathname = usePathname() || "/";
 
   const NAV_ITEMS = [
@@ -20,10 +24,22 @@ export const Nav = () => {
     },
   ];
 
+  const NAV_ICONS = [
+    { id: crypto.randomUUID(), href: "/account", label: "Личный кабинет", icon: 'User' },
+    { id: crypto.randomUUID(), href: "/favorites", label: "Избранное", icon: 'Heart' },
+  ];
+
+  const ICONS = {
+    'User': <User className="w-8 h-8 " />,
+    'Heart': <Heart className="w-8 h-8 " />
+  }
+
   const isActivePath = (pathname, href) => {
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(href + "/");
   };
+
+
 
   return (
     <nav
@@ -49,15 +65,23 @@ export const Nav = () => {
 
       <div className="block xl:hidden">***</div>
       <div className="flex xl:gap-6">
-        <Link href="/about">
-          <Logo className="w-8 h-10 " />
-        </Link>
-        <Link href="/account">
-          <User className="w-8 h-8 " />
-        </Link>
-        <Link href="/favorites">
-          <Heart className="w-8 h-8 " />
-        </Link>
+        {NAV_ICONS.map((navIcon) => {
+          const isActive = isActivePath(pathname, navIcon.href);
+
+          return (
+              <Link
+                  key={navIcon.href}
+                  href={navIcon.href}
+                  className={isActive ? "bg-lightPink rounded-4xl p-2" : ""}
+                  aria-current={isActive ? "page" : undefined}
+                  onMouseEnter={() => setIsTooltipShown(true)}
+                  onMouseLeave={() => setIsTooltipShown(false)}
+              >
+                {ICONS[navIcon.icon]}
+                {isTooltipShown &&  <Tooltip text={navIcon.label}/>}
+              </Link>
+          );
+        })}
       </div>
     </nav>
   );

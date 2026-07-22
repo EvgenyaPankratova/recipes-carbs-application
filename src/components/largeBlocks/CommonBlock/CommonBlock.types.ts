@@ -10,6 +10,7 @@ type CommonBlockProps = {
   mainTitle?: string;
   leftTitle?: string;
   mainTitleColor?: "black" | "orange";
+  hasBreadCrumbs?: boolean;
   btn?: CommonBlockBtnType;
   children: ReactNode;
 };
