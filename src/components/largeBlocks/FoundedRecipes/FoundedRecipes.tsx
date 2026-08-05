@@ -37,6 +37,10 @@ const FoundedRecipes = ({ selectedIngredients }: FoundedRecipesProps) => {
       btn={{
         btnTitle: isRecipeModeStrong ? "Строгий режим" : "Нестрогий режим",
         btnFunc: handleRecipeMode,
+        btnTooltip: {
+          text: `${isRecipeModeStrong ? "Поиск рецептов, содержащих все выбранные ингредиенты" : "Поиск рецептов, содержащих хотя бы один из выбранных ингредиентов"}`,
+          isTooltipOnTop: true,
+        },
       }}
       hasBreadCrumbs={false}
     >

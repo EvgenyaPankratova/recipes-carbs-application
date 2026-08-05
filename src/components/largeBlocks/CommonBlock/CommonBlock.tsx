@@ -1,5 +1,6 @@
 import BreadCrumbs from "@/components/largeBlocks/BreadCrumbs/BreadCrumbs";
 import type { CommonBlockProps } from "@/components/largeBlocks/CommonBlock/CommonBlock.types";
+import { Tooltip } from "@/components/smallBlocks/Tooltip/Tooltip";
 import { CommonButton } from "../../ui/Button/CommonButton";
 
 const CommonBlock = ({
@@ -27,11 +28,21 @@ const CommonBlock = ({
             ) : (
               <div></div>
             )}
-            {btn && (
-              <CommonButton theme="default" onClick={btn.btnFunc}>
-                {btn.btnTitle}
-              </CommonButton>
-            )}
+            {btn &&
+              (btn.btnTooltip ? (
+                <Tooltip
+                  text={btn.btnTooltip.text}
+                  isTooltipOnTop={btn.btnTooltip.isTooltipOnTop}
+                >
+                  <CommonButton theme="default" onClick={btn.btnFunc}>
+                    {btn.btnTitle}
+                  </CommonButton>
+                </Tooltip>
+              ) : (
+                <CommonButton theme="default" onClick={btn.btnFunc}>
+                  {btn.btnTitle}
+                </CommonButton>
+              ))}
           </div>
         )}
       </div>

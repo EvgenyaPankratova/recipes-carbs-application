@@ -1,7 +1,30 @@
-import {TooltipProps} from "@/components/smallBlocks/Tooltip/Tooltip.types";
+"use client";
 
-export const Tooltip = ({text}: TooltipProps) => {
-    return <div className="absolute bg-orange/80 rounded-lg border-black border-2 p-2 text-[clamp(0.6rem,1.8vw,0.8rem)]">
+import { useState } from "react";
+import type { TooltipProps } from "@/components/smallBlocks/Tooltip/Tooltip.types";
+
+export const Tooltip = ({ text, isTooltipOnTop, children }: TooltipProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    >
+      {children}
+      <div
+        className={`
+          absolute max-w-[300px] left-1/2 -translate-x-1/2
+          bg-lightPink/80 rounded-lg border-2 border-black p-2
+          text-[clamp(0.5rem,1.6vw,0.8rem)] whitespace-nowrap 
+          transition-opacity duration-300 pointer-events-none
+          ${isVisible ? "opacity-100" : "opacity-0"}
+          ${isTooltipOnTop ? "-top-10" : "top-[90%] xl:top-[110%]"}
+        `}
+      >
         {text}
+      </div>
     </div>
-}
+  );
+};

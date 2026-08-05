@@ -2,16 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import type { IconsType } from "@/components/layout/Nav/Nav.types";
+import { Tooltip } from "@/components/smallBlocks/Tooltip/Tooltip";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import Heart from "@/svg/heart.svg";
-import Logo from "@/svg/logo.svg";
 import User from "@/svg/user.svg";
-import {useState} from "react";
-import {Tooltip} from "@/components/smallBlocks/Tooltip/Tooltip";
 
 export const Nav = () => {
   const [isTooltipShown, setIsTooltipShown] = useState(false);
+  const [activeIcon, setActiveIcon] = useState(null);
 
   const pathname = usePathname() || "/";
+
+  const isLg = useMediaQuery("(min-width : 1024px)");
 
   const NAV_ITEMS = [
     { id: crypto.randomUUID(), href: "/", label: "Главная" },
@@ -25,21 +29,34 @@ export const Nav = () => {
   ];
 
   const NAV_ICONS = [
-    { id: crypto.randomUUID(), href: "/account", label: "Личный кабинет", icon: 'User' },
-    { id: crypto.randomUUID(), href: "/favorites", label: "Избранное", icon: 'Heart' },
-  ];
+    {
+      id: crypto.randomUUID(),
+      href: "/account",
+      label: "Личный кабинет",
+      icon: "User",
+    },
+    {
+      id: crypto.randomUUID(),
+      href: "/favorites",
+      label: "Избранное",
+      icon: "Heart",
+    },
+  ] as const;
 
-  const ICONS = {
-    'User': <User className="w-8 h-8 " />,
-    'Heart': <Heart className="w-8 h-8 " />
-  }
+  const ICONS: IconsType = {
+    User: <User className="w-8 h-8 " />,
+    Heart: <Heart className="w-8 h-8 " />,
+  } as const;
 
-  const isActivePath = (pathname, href) => {
+  const isActivePath = (pathname: string, href: string) => {
     if (href === "/") return pathname === "/";
     return pathname === href || pathname.startsWith(href + "/");
   };
 
-
+  const handleTooltip = (name) => {
+    setIsTooltipShown((prev) => !prev);
+    setActiveIcon(name);
+  };
 
   return (
     <nav
@@ -69,17 +86,18 @@ export const Nav = () => {
           const isActive = isActivePath(pathname, navIcon.href);
 
           return (
-              <Link
-                  key={navIcon.href}
-                  href={navIcon.href}
-                  className={isActive ? "bg-lightPink rounded-4xl p-2" : ""}
-                  aria-current={isActive ? "page" : undefined}
-                  onMouseEnter={() => setIsTooltipShown(true)}
-                  onMouseLeave={() => setIsTooltipShown(false)}
-              >
-                {ICONS[navIcon.icon]}
-                {isTooltipShown &&  <Tooltip text={navIcon.label}/>}
-              </Link>
+            <Link
+              key={navIcon.href}
+              href={navIcon.href}
+              className={isActive ? "bg-lightPink rounded-4xl p-2" : ""}
+              aria-current={isActive ? "page" : undefined}
+              onMouseEnter={() => handleTooltip(navIcon.icon)}
+              onMouseLeave={() => setIsTooltipShown(false)}
+            >
+              {isLg && (
+                <Tooltip text={navIcon.label}>{ICONS[navIcon.icon]}</Tooltip>
+              )}
+            </Link>
           );
         })}
       </div>

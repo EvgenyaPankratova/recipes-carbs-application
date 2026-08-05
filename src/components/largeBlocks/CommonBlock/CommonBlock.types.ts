@@ -4,6 +4,7 @@ type CommonBlockBtnType = {
   btnTitle: string;
   btnFunc?: () => void;
   btnLink?: string;
+  btnTooltip?: { text: string; isTooltipOnTop: boolean };
 };
 
 type CommonBlockProps = {
