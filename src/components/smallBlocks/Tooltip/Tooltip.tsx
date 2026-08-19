@@ -7,7 +7,8 @@ export const Tooltip = ({ text, isTooltipOnTop, children }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <div
+    <button
+      type="button"
       className="relative"
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
@@ -17,7 +18,7 @@ export const Tooltip = ({ text, isTooltipOnTop, children }: TooltipProps) => {
         className={`
           absolute max-w-[300px] left-1/2 -translate-x-1/2
           bg-lightPink/80 rounded-lg border-2 border-black p-2
-          text-[clamp(0.5rem,1.6vw,0.8rem)] whitespace-nowrap 
+          text-[clamp(0.5rem,1.6vw,0.8rem)] 
           transition-opacity duration-300 pointer-events-none
           ${isVisible ? "opacity-100" : "opacity-0"}
           ${isTooltipOnTop ? "-top-10" : "top-[90%] xl:top-[110%]"}
@@ -25,6 +26,6 @@ export const Tooltip = ({ text, isTooltipOnTop, children }: TooltipProps) => {
       >
         {text}
       </div>
-    </div>
+    </button>
   );
 };

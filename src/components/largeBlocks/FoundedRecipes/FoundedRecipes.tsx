@@ -1,31 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { ingredientItem } from "@/commonTypes/ingredients.types";
 import type { recipeItemType } from "@/commonTypes/recipes.types";
 import CommonBlock from "@/components/largeBlocks/CommonBlock/CommonBlock";
 import type { FoundedRecipesProps } from "@/components/largeBlocks/FoundedRecipes/FoundedRecipes.types";
 import { RecipeItem } from "@/components/smallBlocks/RecipeItem/RecipeItem";
 import { recipes } from "@/lib/recipes";
 
+const hasIngredient = (recipe: recipeItemType, ingredient: ingredientItem) =>
+  recipe.ingredients.some((elem) => elem.id === ingredient.id);
+
 const FoundedRecipes = ({ selectedIngredients }: FoundedRecipesProps) => {
   const [foundedRecipes, setFoundedRecipes] = useState<recipeItemType[]>([]);
-  const [isRecipeModeStrong, setRecipeModeStrong] = useState(true);
+  const [isRecipeModeStrong, setRecipeModeStrong] = useState(false);
 
   useEffect(() => {
-    const matchRecipes = new Set<recipeItemType>();
+    const matchRecipes = recipes.filter((recipe) =>
+      isRecipeModeStrong
+        ? selectedIngredients.every((ingredient) =>
+            hasIngredient(recipe, ingredient),
+          )
+        : selectedIngredients.some((ingredient) =>
+            hasIngredient(recipe, ingredient),
+          ),
+    );
 
-    if (selectedIngredients.length > 0) {
-      for (const ingredient of selectedIngredients) {
-        for (const recipe of recipes) {
-          if (recipe.ingredients.find((elem) => elem.id === ingredient.id)) {
-            matchRecipes.add(recipe);
-          }
-        }
-      }
-
-      setFoundedRecipes(Array.from(matchRecipes));
-    }
-  }, [selectedIngredients]);
+    setFoundedRecipes(matchRecipes);
+  }, [selectedIngredients, isRecipeModeStrong]);
 
   const handleRecipeMode = () => {
     setRecipeModeStrong((prev) => !prev);

@@ -1,7 +1,7 @@
 import type { ComponentProps, MouseEvent, ReactNode } from "react";
 
 type CommonButtonProps = {
-  theme?: "default" | "pink" | "orange" | "transparent";
+  theme?: "default" | "pink" | "transparent";
   className?: string;
   children: ReactNode;
 } & ComponentProps<"button">;
