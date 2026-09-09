@@ -3,13 +3,17 @@
 import { useState } from "react";
 import type { TooltipProps } from "@/components/smallBlocks/Tooltip/Tooltip.types";
 
-export const Tooltip = ({ text, isTooltipOnTop, children }: TooltipProps) => {
+export const Tooltip = ({
+  text,
+  isTooltipOnTop = false,
+  children,
+}: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
     <button
       type="button"
-      className="relative"
+      className="relative cursor-pointer"
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >

@@ -55,8 +55,8 @@ const RecipeBlock = ({ recipe }: RecipeBlockProps) => {
 
   return (
     <section className="flex flex-col gap-14 mt-36">
-      <CommonButton theme="default" onClick={() => router.push("/recipes")}>
-        Назад к рецептам
+      <CommonButton theme="default" onClick={() => router.back()}>
+        Назад
       </CommonButton>
 
       <div className="flex gap-8">

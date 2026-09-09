@@ -35,9 +35,9 @@ export const Avatar = () => {
   };
 
   return (
-    <DoubleBorderContainer className="relative aspect-square h-[330px] left-4 bg-white before:bg-white">
+    <DoubleBorderContainer className="relative left-4 bg-white before:bg-white max-w-[95%]">
       {preview ? (
-        <div className="relative h-[300px] w-[300px]">
+        <div className="relative w-full h-[330px] xl:w-[330px]">
           <Image
             src={preview}
             fill
@@ -46,20 +46,36 @@ export const Avatar = () => {
           ></Image>
         </div>
       ) : (
-        <div>
-          <User className="w-full h-full" />
+        <div className="relative bottom-6">
+          <User className="w-full h-full p-14" />
         </div>
       )}
 
-      <CommonButton className="absolute bottom-4 right-4" theme="default">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          placeholder={"выбрать фото"}
-          multiple={false}
-        />
-      </CommonButton>
+      <div className="flex justify-around items-center absolute bottom-4 w-full">
+        <CommonButton className="!max-w-[70%]" theme="default">
+          <div className="relative flex items-center">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="opacity-0 max-w-[50%]"
+              multiple={false}
+            />
+            <p className="absolute -translate-x-1/2 left-1/2 w-full text-[clamp(1rem,2.5vw,1.2rem)]">
+              {!avatar ? "Выбрать фото" : "Заменить фото"}
+            </p>
+          </div>
+        </CommonButton>
+
+        {avatar && (
+          <div
+            className="bg-lightPink cursor-pointer"
+            onClick={() => setAvatar(null)}
+          >
+            удалить
+          </div>
+        )}
+      </div>
     </DoubleBorderContainer>
   );
 };

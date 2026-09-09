@@ -7,7 +7,7 @@ const Personal = () => {
   return (
     <CommonBlock mainTitle="Привет, name!">
       <div className="flex flex-col gap-12">
-        <div className="grid grid-rows-2 gap-12 xl:gap-0 xl:grid-rows-1 xl:grid-cols-[330px_0.5fr] justify-between">
+        <div className="grid grid-rows-2 gap-12 xl:gap-0 xl:grid-rows-1 grid-cols-1 xl:grid-cols-[330px_0.5fr] justify-between">
           <Avatar />
           <div className="flex flex-col items-end  gap-10">
             <CommonButton

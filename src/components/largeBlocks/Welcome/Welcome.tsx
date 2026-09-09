@@ -8,9 +8,10 @@ const Welcome = () => {
         <div className="relative w-full h-[326px] sm:h-[526px] lg:h-[626px] xl:h-[726px] shadow-[0_4px_10px_rgba(0,0,0,0.25)] rounded-2xl lg:rounded-4xl overflow-hidden">
           <Image
             src="/img/cook.png"
-            alt="promotion"
+            alt="блюдо"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
             className="object-cover"
           />
         </div>
@@ -19,6 +20,7 @@ const Welcome = () => {
             src="/img/cocktail.png"
             alt="cocktail"
             fill
+            sizes="(max-width: 1024px) 30vw, 15vw"
             className="object-cover"
           />
         </div>
@@ -28,6 +30,7 @@ const Welcome = () => {
             src="/img/pizza.jpg"
             alt="pizza"
             fill
+            sizes="(max-width: 1024px) 35vw, 15vw"
             className="object-cover"
           />
         </div>
@@ -45,8 +48,9 @@ const Welcome = () => {
           <div className="absolute -right-32 -top-20 lg:-top-40 aspect-square h-[300px] lg:h-[500px]  z-[0] rounded-full overflow-hidden">
             <Image
               src="/img/ellipse.png"
-              alt="background"
+              alt="pink-ellipse"
               fill
+              sizes="(min-width: 1024px) 500px, 300px"
               className="object-cover"
             />
           </div>

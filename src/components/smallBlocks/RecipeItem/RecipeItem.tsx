@@ -9,7 +9,7 @@ import { DoubleBorderContainer } from "@/components/ui/DoubleBorderContainer/Dou
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import Heart from "@/svg/heart.svg";
 
-export const RecipeItem = ({ recipe }: RecipeBlockProps) => {
+export const RecipeItem = ({ recipe, onRemoveFavorite }: RecipeBlockProps) => {
   const [savedRecipes, setSavedRecipes] = useLocalStorage("recipes", []);
 
   const isRecipeInFavorites = savedRecipes.find(
@@ -25,6 +25,7 @@ export const RecipeItem = ({ recipe }: RecipeBlockProps) => {
           (favRec: recipeItemType) => favRec.id !== recipe.id,
         ),
       );
+      onRemoveFavorite?.(recipe.id);
     } else {
       setSavedRecipes([...savedRecipes, recipe]);
     }
@@ -34,12 +35,18 @@ export const RecipeItem = ({ recipe }: RecipeBlockProps) => {
     <Link href={`/recipes/${recipe.slug}`}>
       <DoubleBorderContainer className="cursor-pointer">
         <div className="relative rounded-4xl w-full h-[126px] lg:h-[276px] z-[2]">
-          <Image
-            src={recipe.img}
-            alt="promotion"
-            fill
-            className="object-cover"
-          />
+          {recipe.img ? (
+            <Image
+              src={recipe.img}
+              alt={recipe.title}
+              fill
+              className="object-cover"
+            />
+          ) : (
+            <div className="flex justify-center items-center h-full w-full bg-lightPink">
+              no photo
+            </div>
+          )}
 
           <button
             type="button"

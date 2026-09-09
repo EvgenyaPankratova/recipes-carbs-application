@@ -1,13 +1,32 @@
+import type { RecommendedProps } from "@/components/largeBlocks/Recommended/Recommended.types";
 import RecipeCard from "@/components/smallBlocks/RecipeCard/RecipeCard";
 import { CommonButton } from "@/components/ui/Button/CommonButton";
 import { recipes } from "@/lib/recipes";
 
-const Recommended = ({ setIsRecommendedOpen, isRecommendedOpen }) => {
+export const Recommended = ({
+  setIsRecommendedOpen,
+  isRecommendedOpen,
+}: RecommendedProps) => {
+  const fourRandomIndexes: number[] = [];
+
+  while (fourRandomIndexes.length < 4) {
+    const randomIndex = Math.floor(Math.random() * recipes.length);
+
+    if (fourRandomIndexes.includes(randomIndex)) {
+      continue;
+    }
+    fourRandomIndexes.push(randomIndex);
+  }
+
+  const fourRandomRecipes = recipes.filter((_, ind) =>
+    fourRandomIndexes.includes(ind),
+  );
+
   return (
     <>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
-        {recipes.map((recipe, index) => (
-          <RecipeCard key={recipe.id} recipe={recipe} index={index} />
+      <div className="flex flex-col md:flex-row flex-wrap gap-6 h-[600px] md:h-[300px]">
+        {fourRandomRecipes.map((recipe, index) => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </div>
 
@@ -21,5 +40,3 @@ const Recommended = ({ setIsRecommendedOpen, isRecommendedOpen }) => {
     </>
   );
 };
-
-export default Recommended;

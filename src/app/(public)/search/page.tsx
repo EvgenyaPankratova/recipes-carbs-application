@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import SearchBlock from "@/components/largeBlocks/SearchBlock/SearchBlock";
+
+export const metadata: Metadata = {
+  title: "Поиск рецептов",
+};
 
 export default async function Page() {
   // Имитация задержки

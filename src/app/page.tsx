@@ -1,5 +1,5 @@
 import Welcome from "@/components/largeBlocks/Welcome/Welcome";
-import RecommendedIntro from "@/components/smallBlocks/RecommendedIntro/RecommendedIntro";
+import RecommendedIntro from "@/components/largeBlocks/RecommendedIntro/RecommendedIntro";
 
 export default function Home() {
   return (

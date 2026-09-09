@@ -53,7 +53,7 @@ export const Nav = () => {
     return pathname === href || pathname.startsWith(href + "/");
   };
 
-  const handleTooltip = (name) => {
+  const handleTooltip = (name: string) => {
     setIsTooltipShown((prev) => !prev);
     setActiveIcon(name);
   };
@@ -89,13 +89,13 @@ export const Nav = () => {
             <Link
               key={navIcon.href}
               href={navIcon.href}
-              className={isActive ? "bg-lightPink rounded-4xl p-2" : ""}
+              className={isActive ? "bg-lightPink rounded-4xl p-2 " : ""}
               aria-current={isActive ? "page" : undefined}
               onMouseEnter={() => handleTooltip(navIcon.icon)}
               onMouseLeave={() => setIsTooltipShown(false)}
             >
               {isLg && (
-                <Tooltip text={navIcon.label}>{ICONS[navIcon.icon]}</Tooltip>
+                <Tooltip text={navIcon.label}>{ICONS[navIcon.icon]} </Tooltip>
               )}
             </Link>
           );

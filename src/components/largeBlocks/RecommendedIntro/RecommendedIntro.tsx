@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Recommended from "@/components/largeBlocks/Recommended/Recommended";
+
 import { CommonButton } from "@/components/ui/Button/CommonButton";
+import {Recommended} from "@/components/largeBlocks/Recommended/Recommended";
 
 const RecommendedIntro = () => {
   const [isRecommendedOpen, setIsRecommendedOpen] = useState(false);

@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 import Header from "@/components/layout/Header/Header";
 
 export const metadata: Metadata = {
-  title: "Recipes Next App",
-  description: "Search recipes and enjoy",
+  title: "Search Recipes",
+  description: "Поиск рецептов по ингредиентам",
 };
 
 export default function RootLayout({
