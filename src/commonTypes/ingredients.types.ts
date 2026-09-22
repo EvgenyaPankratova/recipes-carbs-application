@@ -1,7 +1,7 @@
 type ingredientItem = {
-  id?: number;
+  id: number;
   item: string;
-  img?: string;
+  img: string;
 };
 
 export type { ingredientItem };

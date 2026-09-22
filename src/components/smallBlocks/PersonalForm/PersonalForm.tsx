@@ -158,15 +158,8 @@ const PersonalForm = () => {
               </div>
               <SubmitButton activeTabLabel={activeTabLabel} />
 
-              {/*<div className="mt-15">*/}
-              {/*  {" "}*/}
-              {/*  {!!errors.emailUser?.message && (*/}
-              {/*    <p>{errors.emailUser?.message}</p>*/}
-              {/*  )}*/}
-              {/*  {!!errors.passwordUser?.message && (*/}
-              {/*    <p>{errors.passwordUser?.message}</p>*/}
-              {/*  )}*/}
-              {/*</div>*/}
+              {userEmail}
+              {userPassword}
             </form>
           </div>
         </div>

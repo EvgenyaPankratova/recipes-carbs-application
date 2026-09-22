@@ -10,7 +10,8 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import Heart from "@/svg/heart.svg";
 
 export const RecipeItem = ({ recipe, onRemoveFavorite }: RecipeBlockProps) => {
-  const [savedRecipes, setSavedRecipes] = useLocalStorage("recipes", []);
+  const [savedRecipes, setSavedRecipes] =
+  useLocalStorage<recipeItemType[]>("recipes", []);
 
   const isRecipeInFavorites = savedRecipes.find(
     (favRec: recipeItemType) => favRec.id === recipe.id,

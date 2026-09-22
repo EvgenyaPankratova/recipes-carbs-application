@@ -1,9 +1,9 @@
 import type { RecommendedProps } from "@/components/largeBlocks/Recommended/Recommended.types";
 import RecipeCard from "@/components/smallBlocks/RecipeCard/RecipeCard";
 import { CommonButton } from "@/components/ui/Button/CommonButton";
-import { recipes } from "@/lib/recipes";
 
 export const Recommended = ({
+  recipes,
   setIsRecommendedOpen,
   isRecommendedOpen,
 }: RecommendedProps) => {

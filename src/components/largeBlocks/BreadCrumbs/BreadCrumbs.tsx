@@ -21,7 +21,7 @@ const BreadCrumbs = () => {
         </li>
         {links.map((link, i) => (
           <li
-            key={i}
+            key={link.id}
             className='before:inline-block before:w-[2ch] before:text-center before:content-["/"] opacity-100'
           >
             {link.link && i !== links.length - 1 ? (

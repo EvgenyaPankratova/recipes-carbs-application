@@ -7,7 +7,10 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useSortByKcal } from "@/hooks/useSortByKcal";
 
 export const FavoritesBlock = () => {
-  const [favoriteRecipes, setFavoriteRecipes] = useLocalStorage("recipes", []);
+  const [favoriteRecipes, setFavoriteRecipes] = useLocalStorage<recipeItemType[]>(
+  "recipes",
+  [],
+);
 
   const [sorted, sortBy, handleSort] = useSortByKcal(favoriteRecipes);
 

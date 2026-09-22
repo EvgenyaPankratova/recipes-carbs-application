@@ -1,14 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { recipeItemType } from "@/commonTypes/recipes.types";
 import CommonBlock from "@/components/largeBlocks/CommonBlock/CommonBlock";
 import { RecipeItem } from "@/components/smallBlocks/RecipeItem/RecipeItem";
 import { ShowMore } from "@/components/smallBlocks/ShowMore/ShowMore";
 import { useSortByKcal } from "@/hooks/useSortByKcal";
-import { recipes } from "@/lib/recipes";
 
-const AllRecepies = () => {
+const AllRecepies = ({ recipes }: { recipes: recipeItemType[] }) => {
   const [visibleCount, setVisibleCount] = useState(4);
   const total = recipes.length;
   const [sorted, sortBy, handleSort] = useSortByKcal(recipes);

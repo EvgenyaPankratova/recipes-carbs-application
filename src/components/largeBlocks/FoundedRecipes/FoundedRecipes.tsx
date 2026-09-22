@@ -6,12 +6,14 @@ import type { recipeItemType } from "@/commonTypes/recipes.types";
 import CommonBlock from "@/components/largeBlocks/CommonBlock/CommonBlock";
 import type { FoundedRecipesProps } from "@/components/largeBlocks/FoundedRecipes/FoundedRecipes.types";
 import { RecipeItem } from "@/components/smallBlocks/RecipeItem/RecipeItem";
-import { recipes } from "@/lib/recipes";
 
 const hasIngredient = (recipe: recipeItemType, ingredient: ingredientItem) =>
   recipe.ingredients.some((elem) => elem.id === ingredient.id);
 
-const FoundedRecipes = ({ selectedIngredients }: FoundedRecipesProps) => {
+const FoundedRecipes = ({
+  selectedIngredients,
+  recipes,
+}: FoundedRecipesProps) => {
   const [foundedRecipes, setFoundedRecipes] = useState<recipeItemType[]>([]);
   const [isRecipeModeStrong, setRecipeModeStrong] = useState(false);
 
@@ -27,7 +29,7 @@ const FoundedRecipes = ({ selectedIngredients }: FoundedRecipesProps) => {
     );
 
     setFoundedRecipes(matchRecipes);
-  }, [selectedIngredients, isRecipeModeStrong]);
+  }, [selectedIngredients, isRecipeModeStrong, recipes]);
 
   const handleRecipeMode = () => {
     setRecipeModeStrong((prev) => !prev);

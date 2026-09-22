@@ -6,7 +6,7 @@
 /* Импорт стилей компонентов */
 
 @utility container {
-  @apply mx-auto px-8 sm:px-15 max-w-full lg:px-18;
+  @apply mx-auto px-6 sm:px-15 max-w-full lg:px-18 overflow-hidden;
 }
 
 @utility flex-full {

@@ -8,7 +8,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import User from "@/svg/user.svg";
 
 export const Avatar = () => {
-  const [avatar, setAvatar] = useLocalStorage("userAvatar", null);
+  const [avatar, setAvatar] = useLocalStorage<string | null>("userAvatar", null);
   const [preview, setPreview] = useState<string | null>(null);
 
   useEffect(() => {

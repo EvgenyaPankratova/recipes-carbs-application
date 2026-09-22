@@ -1,5 +1,4 @@
-import type { TabsItemProps } from "@/app/components/ui/Tabs/Tabs.types";
-import { CommonButton } from "../../ui/Button/CommonButton";
+import type { TabsItemProps } from "@/components/ui/Tabs/Tabs.types";
 
 const TabsItem = ({ label, isActive }: TabsItemProps) => {
   return (

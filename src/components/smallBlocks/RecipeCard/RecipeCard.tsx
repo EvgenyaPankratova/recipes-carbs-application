@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {RecipeCardProps} from "@/components/smallBlocks/RecipeCard/RecipeCard.types";
+import type { RecipeCardProps } from "@/components/smallBlocks/RecipeCard/RecipeCard.types";
 
 const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const randomWidth = 1 + Math.floor(Math.random() * 3);
@@ -15,12 +15,19 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
       }}
     >
       <div className="relative h-full overflow-hidden">
-        <Image
-          src={recipe.img}
-          alt={recipe.title}
-          fill
-          className="w-full h-full object-cover"
-        />
+        {recipe.img ? (
+          <Image
+            src={recipe.img}
+            alt={recipe.title}
+            fill
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="flex justify-center items-center h-full w-full bg-lightPink">
+            no photo
+          </div>
+        )}
+
         <div className="absolute p-4 z-10">
           <h3 className="font-semibold text-[clamp(1.5rem,2vw,2rem)] line-clamp-2 xl:line-clamp-3 mb-1">
             {recipe.title}

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const useLocalStorage = (key: string, initialValue) => {
+export const useLocalStorage = <T,>(key: string, initialValue: T) => {
   const [value, setValue] = useState(initialValue);
   const [isInitialized, setIsInitialized] = useState(false);
 

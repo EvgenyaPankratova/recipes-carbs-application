@@ -13,9 +13,9 @@ import { useCallback, useSyncExternalStore } from "react";
 //     "(min-width : 1201px)"
 // );
 
-function useMediaQuery(query) {
+function useMediaQuery(query: string) {
   const subscribe = useCallback(
-    (callback) => {
+    (callback: () => void) => {
       const matchMedia = window.matchMedia(query);
 
       matchMedia.addEventListener("change", callback);
@@ -30,9 +30,7 @@ function useMediaQuery(query) {
     return window.matchMedia(query).matches;
   };
 
-  const getServerSnapshot = () => {
-    throw Error("useMediaQuery is a client-only hook");
-  };
+  const getServerSnapshot = () => false;
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

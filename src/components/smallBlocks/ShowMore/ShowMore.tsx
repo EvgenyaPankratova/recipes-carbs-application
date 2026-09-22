@@ -1,7 +1,14 @@
 "use client";
+
+import type { ShowMoreProps } from "@/components/smallBlocks/ShowMore/ShowMore.types";
 import { CommonButton } from "@/components/ui/Button/CommonButton";
 
-export const ShowMore = ({ total, visibleCount, setVisibleCount, step }) => {
+export const ShowMore = ({
+  total,
+  visibleCount,
+  setVisibleCount,
+  step,
+}: ShowMoreProps) => {
   const remaining = total - visibleCount;
   const buttonText = `Показать ещё ${Math.min(remaining, step)} из ${total}`;
 

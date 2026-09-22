@@ -16,8 +16,8 @@ const Personal = () => {
             >
               Управление аккаунтом
             </CommonButton>
-            <InputField name={"text"} />
-            <InputField name={"email"} />
+            <InputField nameInput={"text"} />
+            <InputField nameInput={"email"} />
           </div>
         </div>
 

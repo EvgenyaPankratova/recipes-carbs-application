@@ -78,7 +78,7 @@ export const recipes = [
       { id: 8, item: "Мука", img: "/img/muka.jpeg" },
       { id: 6, item: "Курица", img: "/img/chicken.jpg" },
     ],
-    img: "",
+    img: "/img/kuritsa_syr-scaled.jpg",
   },
   {
     id: 77,
@@ -91,7 +91,7 @@ export const recipes = [
       { id: 7, item: "Сыр", img: "/img/swiss.jpg" },
       { id: 1, item: "Томат", img: "/img/tomato.jpg" },
     ],
-    img: "",
+    img: "/img/kyritsa-sir.jpg",
   },
   {
     id: 88,
@@ -104,7 +104,7 @@ export const recipes = [
       { id: 12, item: "Салат романо", img: "/img/romano.jpg" },
       { id: 7, item: "Сыр", img: "/img/swiss.jpg" },
     ],
-    img: "",
+    img: "/img/grecheskiy.jpg",
   },
   {
     id: 99,

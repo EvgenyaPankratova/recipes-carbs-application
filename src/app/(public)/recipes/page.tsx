@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import AllRecepies from "@/components/largeBlocks/AllRecipes/AllRecepies";
+import { getRecipes } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Все рецепты",
 };
 
-export default function Recipes() {
+export default async function Recipes() {
+  const recipes = await getRecipes();
+
   return (
     <div>
-      <AllRecepies />
+      <AllRecepies recipes={recipes} />
     </div>
   );
 }

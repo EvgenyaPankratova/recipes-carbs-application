@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import type { IconsType } from "@/components/layout/Nav/Nav.types";
 import { Tooltip } from "@/components/smallBlocks/Tooltip/Tooltip";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import Heart from "@/svg/heart.svg";
+import ResLogo from "@/svg/resLogo.svg";
 import User from "@/svg/user.svg";
 
 export const Nav = () => {
   const [isTooltipShown, setIsTooltipShown] = useState(false);
-  const [activeIcon, setActiveIcon] = useState(null);
+  const [activeIcon, setActiveIcon] = useState<string | null>(null);
 
   const pathname = usePathname() || "/";
 
@@ -43,7 +43,7 @@ export const Nav = () => {
     },
   ] as const;
 
-  const ICONS: IconsType = {
+  const ICONS = {
     User: <User className="w-8 h-8 " />,
     Heart: <Heart className="w-8 h-8 " />,
   } as const;
@@ -60,27 +60,34 @@ export const Nav = () => {
 
   return (
     <nav
-      className="w-full flex justify-between items-center *:items-center *:gap-4 *:xl:gap-12 py-2 px-10 xl:py-4 xl:px-16 text-[10px] xl:text-[14px]"
+      className="w-full flex justify-between items-center *:items-center *:gap-4 *:xl:gap-12 py-2 px-4 md:px-10 xl:py-4 xl:px-16 text-[10px] xl:text-[14px]"
       aria-label="Main navigation"
     >
-      <div className="hidden xl:flex *:cursor-pointer *:hover:bg-lightPink *:hover:rounded-2xl *:px-2 *:py-1 *:transition-colors duration-500">
-        {NAV_ITEMS.map((navItem) => {
-          const isActive = isActivePath(pathname, navItem.href);
+      <div className="flex">
+        <Link href={"/"}>
+          <ResLogo className="h-18 w-18" />
+        </Link>
 
-          return (
-            <Link
-              key={navItem.href}
-              href={navItem.href}
-              className={isActive ? "bg-lightPink rounded-4xl p-2" : ""}
-              aria-current={isActive ? "page" : undefined}
-            >
-              {navItem.label}
-            </Link>
-          );
-        })}
+        <div className="block xl:hidden">Найти...</div>
+
+        <div className="hidden xl:flex gap-8 *:cursor-pointer *:hover:bg-lightPink *:hover:rounded-2xl *:px-2 *:py-1 *:transition-colors duration-500">
+          {NAV_ITEMS.map((navItem) => {
+            const isActive = isActivePath(pathname, navItem.href);
+
+            return (
+              <Link
+                key={navItem.href}
+                href={navItem.href}
+                className={isActive ? "bg-lightPink rounded-4xl p-2" : ""}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {navItem.label}
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
-      <div className="block xl:hidden">***</div>
       <div className="flex xl:gap-6">
         {NAV_ICONS.map((navIcon) => {
           const isActive = isActivePath(pathname, navIcon.href);
@@ -95,7 +102,7 @@ export const Nav = () => {
               onMouseLeave={() => setIsTooltipShown(false)}
             >
               {isLg && (
-                <Tooltip text={navIcon.label}>{ICONS[navIcon.icon]} </Tooltip>
+                <Tooltip text={navIcon.label}>{ICONS[navIcon.icon]}</Tooltip>
               )}
             </Link>
           );

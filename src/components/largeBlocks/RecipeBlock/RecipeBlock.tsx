@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import type { recipeItemType } from "@/commonTypes/recipes.types";
 import type { RecipeBlockProps } from "@/components/largeBlocks/RecipeBlock/RecipeBlock.types";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { ingredients } from "@/lib/ingredients";
 import Heart from "@/svg/heart.svg";
 import RestangleStep from "@/svg/rectangleStep.svg";
 import { CommonButton } from "../../ui/Button/CommonButton";
@@ -13,7 +12,8 @@ import { CommonButton } from "../../ui/Button/CommonButton";
 const RecipeBlock = ({ recipe }: RecipeBlockProps) => {
   const router = useRouter();
 
-  const [savedRecipes, setSavedRecipes] = useLocalStorage("recipes", []);
+  const [savedRecipes, setSavedRecipes] =
+  useLocalStorage<recipeItemType[]>("recipes", []);
 
   const isRecipeInFavorites = savedRecipes.find(
     (favRec: recipeItemType) => favRec.id === recipe.id,
@@ -100,11 +100,7 @@ const RecipeBlock = ({ recipe }: RecipeBlockProps) => {
             className={`
           grid grid-cols-1 gap-x-4 gap-y-8`}
           >
-            {recipe.ingredients.map(({ id, item }) => {
-              const ingredientData = ingredients.find(
-                (ing) => ing.item === item,
-              );
-
+            {recipe.ingredients.map(({ id, item, img }) => {
               return (
                 <button
                   type={"button"}
@@ -113,10 +109,10 @@ const RecipeBlock = ({ recipe }: RecipeBlockProps) => {
           flex gap-x-2 font-spectral lowercase text-[1.3rem] items-center rounded-4xl p-2 bg-lightPink text-black shadow-[0_4px_10px_rgba(0,0,0,0.25)]   px-4`}
                 >
                   <div className="relative w-9 h-8 lg:h-9 rounded-full overflow-hidden">
-                    {ingredientData?.img && (
+                    {img && (
                       <Image
-                        src={ingredientData.img}
-                        alt={ingredientData.item || item}
+                        src={img}
+                        alt={item}
                         fill
                         className="object-cover"
                       />
